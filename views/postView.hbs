@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+    <title>{{thread.title}}</title>
+</head>
+
+<body>
+    <a href="/threads">
+        <h1>Orange Forum</h1>
+    </a>
+    <p class="post_info">{{thread.date}} №{{thread._id}}</p>
+    <h3>{{thread.title}}</h3>
+    <ul>
+        <li>
+            {{thread.first_post_text}}
+        </li>
+        {{#each posts}}
+        <li>
+            <p class="post_info">{{ this.date }} №{{ this._id }}</p>
+            {{ this.text }}
+        </li>
+        {{/each}}
+    </ul>
+
+    <button onclick="document.getElementById('answer_to_thread').style='display: block;'">Ответить в тред</button>
+
+    <form method="POST" action="/thread/{{thread._id}}" id="answer_to_thread"
+        style="display: none;">
+        <table>
+            <tr>
+                <td><textarea cols="60" rows="10" name="text" id="title_input" placeholder="Сообщение"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td><button type="submit">Подтвердить</button></td>
+            </tr>
+            <tr>
+                <td><button type="button"
+                        onclick="document.getElementById('answer_to_thread').style='display: none;'">Отмена</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+
+</html>
