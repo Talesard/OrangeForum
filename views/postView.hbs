@@ -12,42 +12,57 @@
 
 <body>
     <a href="/threads">
-        <h1>Orange Forum</h1>
+        <h1 class="main_header">Orange Forum</h1>
     </a>
-    <p class="post_info">{{thread.date}} №{{thread._id}}</p>
-    <h3>{{thread.title}}</h3>
-    <ul>
-        <li>
-            {{thread.first_post_text}}
-        </li>
-        {{#each posts}}
-        <li>
-            <p class="post_info">{{ this.date }} №{{ this._id }}</p>
-            {{ this.text }}
-        </li>
-        {{/each}}
-    </ul>
+    <button class="button_show_answer_form" onclick="document.getElementById('answer_button').scrollIntoView();">В конец треда</button>
 
-    <button onclick="document.getElementById('answer_to_thread').style='display: block;'">Ответить в тред</button>
+    <div class="thread">
+        <div  class="post post_type_oppost">
+            <p class="post__details">{{thread.date}} tid#{{thread._id}}</p>
+            <div  class="post__message">
+                <h3>{{thread.title}}</h3>
+                <p>{{thread.first_post_text}}</p>
+            </div>
+        </div>
+        {{#each posts}}
+        <div class="post post_type_reply">
+
+            <p class="post__details">{{ this.date }} pid#{{ this._id }}</p>
+            <div  class="post__message">{{ this.text }}</div>
+
+        </div>
+        {{/each}}
+    </div>
+    
+    <button id="answer_button" class="button_show_answer_form" onclick="document.getElementById('answer_to_thread').style='display: block;'">Ответить в тред</button>
 
     <form method="POST" action="/thread/{{thread._id}}" id="answer_to_thread"
-        style="display: none;">
+        style="display: none;" class="postform">
         <table>
             <tr>
-                <td><textarea cols="60" rows="10" name="text" id="title_input" placeholder="Сообщение"></textarea>
+                <td><textarea cols="60" rows="10" class="textinput" name="text" id="title_input" placeholder="Сообщение"></textarea>
                 </td>
             </tr>
             <tr>
-                <td><button type="submit">Подтвердить</button></td>
-            </tr>
-            <tr>
-                <td><button type="button"
-                        onclick="document.getElementById('answer_to_thread').style='display: none;'">Отмена</button>
-                </td>
+                <td><button type="submit" class="button_submit_answer">Подтвердить</button></td>
             </tr>
         </table>
     </form>
 
+    <script>
+        let bt_show_answer = document.getElementById("answer_button");
+        bt_show_answer.onclick = () => {
+            if (bt_show_answer.textContent === "Ответить в тред") {
+                bt_show_answer.textContent = "Закрыть форму постинга";
+                let form = document.getElementById('answer_to_thread')
+                form.style='display: block';
+                form.scrollIntoView();
+            } else {
+                bt_show_answer.textContent = "Ответить в тред";
+                document.getElementById('answer_to_thread').style='display: none';
+            }
+        }
+    </script>
 </body>
 
 </html>
