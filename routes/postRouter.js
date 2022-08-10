@@ -1,8 +1,9 @@
-const express = require("express");
-const postController = require("../controllers/postController.js");
+const express = require('express');
+const postController = require('../controllers/postController');
+
 const postRouter = express.Router();
- 
-postRouter.get("/:thread_id", postController.getPostsList);
-postRouter.post("/:thread_id", postController.postPost);
- 
+
+postRouter.get('/:threadId', postController.getPostsList);
+postRouter.post('/:threadId', postController.postPost);
+
 module.exports = postRouter;
