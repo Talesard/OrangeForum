@@ -13,9 +13,9 @@ exports.getThreadsList = async (request, response) => {
 
 exports.postThread = async (request, response) => {
   if (!request.body) return response.sendStatus(400);
-  const title = request.body.title;
+  const { title } = request.body;
   const firstPostText = request.body.first_post_text;
-  const thread = new Thread({ title: title, first_post_text: firstPostText });
+  const thread = new Thread({ title, first_post_text: firstPostText });
   try {
     await thread.save();
   } catch (error) {

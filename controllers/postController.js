@@ -6,20 +6,20 @@ exports.getPostsList = async (request, response) => {
   let postsList;
   let currThread;
   try {
-    postsList = await Post.find({ threadId }).sort({ date: 1 });
+    postsList = await Post.find({ thread_id: threadId }).sort({ date: 1 });
     currThread = await Thread.findOne({ _id: threadId });
   } catch (error) {
-    console.log(`err get posts by thread id: ${threadId}`);
-    response.status(404).send('ERROR 404. NOT FOUND!');
+    // console.log(`err get posts by thread id: ${threadId}`);
+    response.status(404).send('ERROR 404. NOT FOUND.');
     return;
   }
   response.render('postView', { thread: currThread, posts: postsList });
 };
 
 exports.postPost = async (request, response) => {
-  const threadId = request.params.threadId;
-  const text = request.body.text;
-  const post = new Post({ thread_id: threadId, text: text });
+  const { threadId } = request.params;
+  const { text } = request.body;
+  const post = new Post({ thread_id: threadId, text });
   try {
     await post.save();
   } catch (error) {

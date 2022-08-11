@@ -26,3 +26,5 @@ const run = () => {
 };
 
 run();
+
+module.exports.app = app;
