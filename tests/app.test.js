@@ -42,9 +42,8 @@ it('can get threads list', (done) => {
 });
 
 it('can get posts in thread', (done) => {
-  const threadId = '62f50dbf0ebc0b4da97ad487';
   request(app)
-    .get(`/thread/${threadId}`)
+    .get(`/thread/${testThreadId}`)
     .expect(200)
     .end(done);
 });
