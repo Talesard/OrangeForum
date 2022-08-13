@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,45 +8,71 @@
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
     <title>{{thread.title}}</title>
 </head>
-
 <body>
-    <a href="/threads">
-        <h1 class="main_header">Orange Forum</h1>
-    </a>
-    <button class="button_show_answer_form" onclick="document.getElementById('answer_button').scrollIntoView();">В конец треда</button>
+    
 
-    <div class="thread">
-        <div  class="post post_type_oppost">
-            <p class="post__details">{{thread.date}} tid#{{thread._id}}</p>
-            <div  class="post__message">
-                <h3>{{thread.title}}</h3>
-                <p>{{thread.first_post_text}}</p>
+    <div class="page">
+        <div class="left-bar">
+            <div class="menu">
+                <ul>
+                    <li><a href="/">/b/ - бред</a></li>
+                    <li><a href="/">/gd/ - gamedev</a></li>
+                    <li><a href="/">/hw/ - компьютерное железо</a></li>
+                    <li><a href="/">/mobi/ - мобильные устройства и приложения</a></li>
+                    <li><a href="/">/pr/ - программирование</a></li>
+                    <li><a href="/">/ra/ - радиотехника</a></li>
+                    <li><a href="/">/s/ - программы</a></li>
+                    <li><a href="/">/t/ - техника</a></li>
+                    <li><a href="/">/web/ - веб-мастера</a></li>
+                </ul>
             </div>
         </div>
-        {{#each posts}}
-        <div class="post post_type_reply">
+        <div class="right-bar">
+            <div class="header">
+                <a href="/threads">
+                    <h1 class="main_header">Orange Forum</h1>
+                </a>
+                <br>
+                <button class="button_show_answer_form" onclick="document.getElementById('answer_button').scrollIntoView();">В конец треда</button>
+            </div>
+            <div class="content">
+                <div class="thread">
+                    <div  class="post post_type_oppost">
+                        <p class="post__details">{{thread.date}} tid#{{thread._id}}</p>
+                        <div  class="post__message">
+                            <h3>{{thread.title}}</h3>
+                            <p>{{thread.first_post_text}}</p>
+                        </div>
+                    </div>
 
-            <p class="post__details">{{ this.date }} pid#{{ this._id }}</p>
-            <div  class="post__message">{{ this.text }}</div>
+                    {{#each posts}}
+                    <div class="post post_type_reply">
 
+                        <p class="post__details">{{ this.date }} pid#{{ this._id }}</p>
+                        <div  class="post__message">{{ this.text }}</div>
+
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+            <div class="footer">
+                <button id="answer_button" class="button_show_answer_form" onclick="document.getElementById('answer_to_thread').style='display: block;'">Ответить в тред</button>
+
+                <form method="POST" action="/thread/{{thread._id}}" id="answer_to_thread"
+                    style="display: none;" class="postform">
+                    <table>
+                        <tr>
+                            <td><textarea cols="60" rows="10" class="textinput" name="text" id="title_input" placeholder="Сообщение"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><button type="submit" class="button_submit_answer">Подтвердить</button></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
         </div>
-        {{/each}}
     </div>
-    
-    <button id="answer_button" class="button_show_answer_form" onclick="document.getElementById('answer_to_thread').style='display: block;'">Ответить в тред</button>
-
-    <form method="POST" action="/thread/{{thread._id}}" id="answer_to_thread"
-        style="display: none;" class="postform">
-        <table>
-            <tr>
-                <td><textarea cols="60" rows="10" class="textinput" name="text" id="title_input" placeholder="Сообщение"></textarea>
-                </td>
-            </tr>
-            <tr>
-                <td><button type="submit" class="button_submit_answer">Подтвердить</button></td>
-            </tr>
-        </table>
-    </form>
 
     <script>
         let bt_show_answer = document.getElementById("answer_button");
@@ -63,6 +88,6 @@
             }
         }
     </script>
-</body>
 
+</body>
 </html>
