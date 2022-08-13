@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,51 +8,77 @@
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
     <title>Threads</title>
 </head>
-
 <body>
-    <a href="/threads">
-        <h1 class="main_header">Orange Forum</h1>
-    </a>
+    
 
-    <button class="button_show_answer_form" id="add_thread_bt" onclick="document.getElementById('add_thread_form').style='display: block;'">Создать тред</button>
-    <form method="POST" action="/threads" id="add_thread_form" class="postform" style="display: none;">
-        <table>
-            <tr>
-                <td><textarea type="text" cols="60" rows="1" class="textinput" name="title" id="title_input" placeholder="Заголовок"></textarea></td>
-            </tr>
-            <tr>
-                <td><textarea type="text" cols="60" rows="10" class="textinput" name="first_post_text" id="details_input" placeholder="Сообщение"> </textarea></td>
-            </tr>
-            <tr>
-                <td><button type="submit" class="button_submit_answer">Подтвердить</button></td>
-            </tr>
-        </table>
-    </form>
-    <br>
-        {{#each threads}}
-        <div class="thread">
-            <p class="post__details">{{ this.date }} tid#{{ this._id }} <a
-                    href="/thread/{{this._id}}"> Ответ</a></p>
-            <b>{{ this.title }} </b>
-            <div class="post__message">{{ this.first_post_text }}</div>
+    <div class="page">
+        <div class="left-bar">
+            <div class="menu">
+                <ul>
+                    <li><a href="/">/b/ - бред</a></li>
+                    <li><a href="/">/gd/ - gamedev</a></li>
+                    <li><a href="/">/hw/ - компьютерное железо</a></li>
+                    <li><a href="/">/mobi/ - мобильные устройства и приложения</a></li>
+                    <li><a href="/">/pr/ - программирование</a></li>
+                    <li><a href="/">/ra/ - радиотехника</a></li>
+                    <li><a href="/">/s/ - программы</a></li>
+                    <li><a href="/">/t/ - техника</a></li>
+                    <li><a href="/">/web/ - веб-мастера</a></li>
+                </ul>
+            </div>
         </div>
-        {{/each}}
+        <div class="right-bar">
+            <div class="header">
+                <a href="/threads">
+                    <h1 class="main_header">Orange Forum</h1>
+                </a>
+                <br>
+                <div class="postdiv">
+                    <button class="button_show_answer_form" id="add_thread_bt" onclick="document.getElementById('add_thread_form').style='display: block;'">Создать тред</button>
+                    <form method="POST" action="/threads" id="add_thread_form" class="postform" style="display: none;">
+                        <table>
+                            <tr>
+                                <td><textarea type="text" cols="60" rows="1" class="textinput" name="title" id="title_input" placeholder="Заголовок"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td><textarea type="text" cols="60" rows="10" class="textinput" name="first_post_text" id="details_input" placeholder="Сообщение"> </textarea></td>
+                            </tr>
+                            <tr>
+                                <td><button type="submit" class="button_submit_answer">Подтвердить</button></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+            <div class="content">
+                {{#each threads}}
+                <div class="thread">
+                    <p class="post__details">{{ this.date }} tid#{{ this._id }} <a
+                            href="/thread/{{this._id}}"> Ответ</a></p>
+                    <b>{{ this.title }} </b>
+                    <div class="post__message">{{ this.first_post_text }}</div>
+                </div>
+                {{/each}}
+            </div>
+            <div class="footer">FOOTER</div>
+        </div>
+    </div>
 
-
-        <script>
+    <script>
         let add_thread_bt = document.getElementById("add_thread_bt");
         add_thread_bt.onclick = () => {
             if (add_thread_bt.textContent === "Создать тред") {
                 add_thread_bt.textContent = "Закрыть форму постинга";
                 let form = document.getElementById('add_thread_form')
                 form.style='display: block';
-                form.scrollIntoView();
+                let header = document.getElementById('main_header')
+                header.scrollIntoView();
             } else {
                 add_thread_bt.textContent = "Создать тред";
                 document.getElementById('add_thread_form').style='display: none';
             }
         }
     </script>
-</body>
 
+</body>
 </html>
