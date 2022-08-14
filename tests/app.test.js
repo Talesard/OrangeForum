@@ -15,7 +15,7 @@ const getRandomString = (len) => {
 
 const randomTitle = getRandomString(20);
 const randomFirstPostText = getRandomString(50);
-const testThreadId = '62f50dbf0ebc0b4da97ad487';
+const testThreadId = '62f9363e9fcea9a82d85bc5d';
 const randomThreadPostText = getRandomString(50);
 
 it('error 404 on unknown path', (done) => {
@@ -34,9 +34,17 @@ it('error 404 on unknown threadId', (done) => {
     .end(done);
 });
 
+it('error 404 on unknown board', (done) => {
+  request(app)
+    .get('/threads/unknownBoard')
+    .expect(404)
+    .expect('ERROR 404. NOT FOUND.')
+    .end(done);
+});
+
 it('can get threads list', (done) => {
   request(app)
-    .get('/threads')
+    .get('/threads/b/')
     .expect(200)
     .end(done);
 });
@@ -50,7 +58,7 @@ it('can get posts in thread', (done) => {
 
 it('can create new thread', (done) => {
   request(app)
-    .post('/threads')
+    .post('/threads/mochatest')
     .set('Connection', 'keep alive')
     .set('Content-Type', 'application/json')
     .type('form')
@@ -61,7 +69,7 @@ it('can create new thread', (done) => {
 
 it('can get created thread', (done) => {
   request(app)
-    .get('/threads')
+    .get('/threads/mochatest')
     .expect(200)
     .expect((response) => {
       assert.equal(response.text.includes(randomTitle), true);

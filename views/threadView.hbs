@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/static/style.css">
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
-    <title>Threads</title>
+    <title>/{{ board }}/ - Threads</title>
 </head>
 <body>
     
@@ -15,27 +15,28 @@
         <div class="left-bar">
             <div class="menu">
                 <ul>
-                    <li><a href="/">/b/ - бред</a></li>
-                    <li><a href="/">/gd/ - gamedev</a></li>
-                    <li><a href="/">/hw/ - компьютерное железо</a></li>
-                    <li><a href="/">/mobi/ - мобильные устройства и приложения</a></li>
-                    <li><a href="/">/pr/ - программирование</a></li>
-                    <li><a href="/">/ra/ - радиотехника</a></li>
-                    <li><a href="/">/s/ - программы</a></li>
-                    <li><a href="/">/t/ - техника</a></li>
-                    <li><a href="/">/web/ - веб-мастера</a></li>
+                    <li><a href="/threads/b">/b/ - бред</a></li>
+                    <li><a href="/threads/gd">/gd/ - gamedev</a></li>
+                    <li><a href="/threads/hw">/hw/ - компьютерное железо</a></li>
+                    <li><a href="/threads/mobi">/mobi/ - мобильные устройства и приложения</a></li>
+                    <li><a href="/threads/pr">/pr/ - программирование</a></li>
+                    <li><a href="/threads/ra">/ra/ - радиотехника</a></li>
+                    <li><a href="/threads/s">/s/ - программы</a></li>
+                    <li><a href="/threads/t">/t/ - техника</a></li>
+                    <li><a href="/threads/web">/web/ - веб-мастера</a></li>
+                    <li><a href="/threads/mochatest">/mochatest/ - для тестов</a></li>
                 </ul>
             </div>
         </div>
         <div class="right-bar">
             <div class="header">
-                <a href="/threads">
-                    <h1 class="main_header">Orange Forum</h1>
+                <a href="/threads/{{ board }}">
+                    <h1 class="main_header">Orange Forum - /{{ board }}/</h1>
                 </a>
                 <br>
                 <div class="postdiv">
                     <button class="button_show_answer_form" id="add_thread_bt" onclick="document.getElementById('add_thread_form').style='display: block;'">Создать тред</button>
-                    <form method="POST" action="/threads" id="add_thread_form" class="postform" style="display: none;">
+                    <form method="POST" action="/threads/{{ board }}/" id="add_thread_form" class="postform" style="display: none;">
                         <table>
                             <tr>
                                 <td><textarea type="text" cols="60" rows="1" class="textinput" name="title" id="title_input" placeholder="Заголовок"></textarea></td>
@@ -60,7 +61,7 @@
                 </div>
                 {{/each}}
             </div>
-            <div class="footer">FOOTER</div>
+            <div class="footer"></div>
         </div>
     </div>
 

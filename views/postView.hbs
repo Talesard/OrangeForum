@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/static/style.css">
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
-    <title>{{thread.title}}</title>
+    <title>/{{ thread.board }}/ - {{thread.title}}</title>
 </head>
 <body>
     
@@ -24,13 +24,14 @@
                     <li><a href="/">/s/ - программы</a></li>
                     <li><a href="/">/t/ - техника</a></li>
                     <li><a href="/">/web/ - веб-мастера</a></li>
+                    <li><a href="/threads/mochatest">/mochatest/ - для тестов</a></li>
                 </ul>
             </div>
         </div>
         <div class="right-bar">
             <div class="header">
-                <a href="/threads">
-                    <h1 class="main_header">Orange Forum</h1>
+                <a href="/threads/{{ thread.board }}">
+                    <h1 class="main_header">Orange Forum - /{{ thread.board }}/</h1>
                 </a>
                 <br>
                 <button class="button_show_answer_form" onclick="document.getElementById('answer_button').scrollIntoView();">В конец треда</button>
