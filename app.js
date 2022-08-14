@@ -13,7 +13,7 @@ app.use('/static', express.static(`${__dirname}/public`));
 app.use('/threads', threadRouter);
 app.use('/thread', postRouter);
 
-app.get('/', (request, response) => { response.redirect('/threads'); });
+app.get('/', (request, response) => { response.redirect('/threads/b/'); });
 
 app.use(async (request, response) => { response.status(404).send('ERROR 404. NOT FOUND.'); });
 
