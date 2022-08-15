@@ -20,14 +20,14 @@ exports.postPost = async (request, response) => {
   const { threadId } = request.params;
   const { text } = request.body;
   const { replyTo } = request.body;
-  const post = replyTo ? new Post({ thread_id: threadId, text: text, reply_to: replyTo }) : new Post({ thread_id: threadId, text: text });
+  const post = replyTo ? new Post({ thread_id: threadId, text, reply_to: replyTo }) : new Post({ thread_id: threadId, text });
   try {
     let savedId;
     await post.save()
-      .then(async savedPost => {
+      .then(async (savedPost) => {
         savedId = savedPost._id;
         if (replyTo) {
-          await Post.findByIdAndUpdate({_id: replyTo}, {$push: {reply_from: savedId}});
+          await Post.findByIdAndUpdate({ _id: replyTo }, { $push: { reply_from: savedId } });
         }
       });
   } catch (error) {

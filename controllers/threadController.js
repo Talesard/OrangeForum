@@ -1,6 +1,6 @@
 const Thread = require('../models/thread');
 
-boardsList = ['b', 'gd', 'hw', 'mobi', 'pr', 'ra', 's', 's', 't', 'web', 'mochatest'];
+const boardsList = ['b', 'gd', 'hw', 'mobi', 'pr', 'ra', 's', 's', 't', 'web', 'mochatest'];
 
 exports.getThreadsList = async (request, response) => {
   const { board } = request.params;

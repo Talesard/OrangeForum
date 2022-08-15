@@ -84,7 +84,7 @@ it('can add post to thread', (done) => {
     .set('Connection', 'keep alive')
     .set('Content-Type', 'application/json')
     .type('form')
-    .send({ text: randomThreadPostText, answerTo: ''})
+    .send({ text: randomThreadPostText, answerTo: '' })
     .expect(302) // redirect
     .end(done);
 });
