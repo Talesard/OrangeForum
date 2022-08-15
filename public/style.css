@@ -20,6 +20,10 @@ a:hover {
   color: #A74300;
 }
 
+button:hover {
+  cursor:pointer;
+  color: #A74300;
+}
 .page {
   position:relative;
   overflow: auto; /*hide x scroll bar*/
