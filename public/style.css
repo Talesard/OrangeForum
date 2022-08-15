@@ -7,7 +7,8 @@ html, body {
   font-family: 'Trebuchet MS',sans-serif;
   background-color: #15202B;
   color: white;
-  overflow-x: hidden; /*disable scrolling x axis*/
+  /* overflow-x: hidden;
+  overflow-y: none; */
 }
 
 a {
@@ -17,7 +18,15 @@ a {
 
 .page {
   position:relative;
+  overflow: auto; /*hide x scroll bar*/
+  -ms-overflow-style: none; /*hide x scroll bar*/
+  scrollbar-width: none; /*hide x scroll bar*/
 }
+
+.page::-webkit-scrollbar { /*hide x scroll bar*/
+  width: 0;
+  height: 0;
+} 
 
 ul {
   text-align: left;
