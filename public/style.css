@@ -16,6 +16,10 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  color: #A74300;
+}
+
 .page {
   position:relative;
   overflow: auto; /*hide x scroll bar*/
