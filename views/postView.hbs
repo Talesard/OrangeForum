@@ -38,19 +38,22 @@
             </div>
             <div class="content">
                 <div class="thread">
-                    <div  class="post post_type_oppost">
+                    <div  class="post post_type_oppost" id="{{thread._id}}">
                         <p class="post__details">{{thread.date}} tid#{{thread._id}}</p>
                         <div  class="post__message" style="white-space: normal;">
                             <h3>{{thread.title}}</h3>
                             <p style="white-space: pre-wrap;">{{thread.first_post_text}}</p>
                         </div>
                     </div>
-
                     {{#each posts}}
-                    <div class="post post_type_reply">
+                    <div class="post post_type_reply" id="{{ this._id }}">
 
                         <p class="post__details">{{ this.date }} pid#{{ this._id }}</p>
-                        <div  class="post__message">{{ this.text }}</div>
+                        <div  class="post__message">{{#if this.reply_to}}<a href="#{{ this.reply_to }}">>>{{ this.reply_to }}</a><br>{{/if}}{{ this.text }}
+                        {{#each this.reply_from}}
+                        <a href="#{{this}}">>>{{this}}</a>
+                        {{/each}}
+                        </div>
 
                     </div>
                     {{/each}}
@@ -64,6 +67,10 @@
                     <table>
                         <tr>
                             <td><textarea cols="60" rows="10" class="textinput" name="text" id="title_input" placeholder="Сообщение"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><textarea cols="60" rows="1" class="textinput" name="replyTo" id="reply_to_input" placeholder="Id для ответа"></textarea>
                             </td>
                         </tr>
                         <tr>
