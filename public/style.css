@@ -167,3 +167,8 @@ li {
     padding: 16px;
     white-space: pre-wrap;
   }
+
+  .replies-anchor{
+    font-size: 0.9em;
+    white-space:nowrap;
+  }

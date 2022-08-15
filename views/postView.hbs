@@ -50,11 +50,12 @@
 
                         <p class="post__details">{{ this.date }} pid#{{ this._id }}</p>
                         <div  class="post__message">{{#if this.reply_to}}<a href="#{{ this.reply_to }}">>>{{ this.reply_to }}</a><br>{{/if}}{{ this.text }}
-                        {{#each this.reply_from}}
-                        <a href="#{{this}}">>>{{this}}</a>
-                        {{/each}}
-                        </div>
-
+                        {{#if this.reply_from}}
+                        <p class="replies-anchor">
+                            {{#each this.reply_from}}
+                            <a href="#{{this}}">>>{{this}}</a>
+                            {{/each}}
+                        </p>{{/if}}</div>
                     </div>
                     {{/each}}
                 </div>
