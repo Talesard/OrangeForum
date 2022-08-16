@@ -8,7 +8,7 @@ async function deleteAllPepegaPosts() {
     await mongoClient.connect();
     const db = mongoClient.db('2chdb');
     const postsCollection = db.collection('posts');
-    await postsCollection.deleteMany({text: 'pepega'});
+    await postsCollection.deleteMany({ text: 'pepega' });
   } catch (err) {
     console.log(err);
   } finally {

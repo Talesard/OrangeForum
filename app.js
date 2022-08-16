@@ -15,7 +15,7 @@ app.use('/thread', postRouter);
 
 app.get('/', (request, response) => { response.redirect('/threads/b/'); });
 
-app.use(async (request, response) => {     response.status(404).render('error', {error_code: 404, error_message: 'URL не существует.'});});
+app.use(async (request, response) => { response.status(404).render('error', { error_code: 404, error_message: 'URL не существует.' }); });
 
 const run = () => {
   mongoose.connect('mongodb://localhost:27017/2chdb', { useUnifiedTopology: true })
