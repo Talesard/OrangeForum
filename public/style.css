@@ -156,27 +156,27 @@ li {
   word-wrap: break-word;
   }
 
-  .post_type_reply {
-    max-width: 50vw;
-    /* background: #DDDDDD; */
-    background: #192734;
-    border: 1px #25323E;
-    border-radius: 3px;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    position: relative;
-    margin: 2px 0 4px 20px;
-    overflow: visible;
-  }
+.post_type_reply {
+  max-width: 50vw;
+  /* background: #DDDDDD; */
+  background: #192734;
+  border: 1px #25323E;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  position: relative;
+  margin: 2px 0 4px 20px;
+  overflow: visible;
+}
 
-  .post__message {
-    overflow: auto;
-    max-height: 600px;
-    padding: 16px;
-    white-space: pre-wrap;
-  }
+.post__message {
+  overflow: auto;
+  max-height: 600px;
+  padding: 16px;
+  white-space: pre-wrap;
+}
 
-  .replies-anchor{
-    font-size: 0.9em;
-    white-space:nowrap;
-  }
+.replies-anchor{
+  font-size: 0.9em;
+  white-space:nowrap;
+}
