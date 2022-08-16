@@ -5,7 +5,7 @@ const boardsList = ['b', 'gd', 'hw', 'mobi', 'pr', 'ra', 's', 's', 't', 'web', '
 exports.getThreadsList = async (request, response) => {
   const { board } = request.params;
   if (boardsList.indexOf(board) === -1) {
-    response.status(404).send('ERROR 404. NOT FOUND.');
+    response.status(404).render('error', {error_code: 404, error_message: 'Доска не найдена.'});
     return;
   }
   let threadsList;
@@ -23,7 +23,7 @@ exports.postThread = async (request, response) => {
   const { title } = request.body;
   const { board } = request.params;
   if (boardsList.indexOf(board) === -1) {
-    response.status(404).send('ERROR 404. NOT FOUND.');
+    response.status(404).render('error', {error_code: 404, error_message: 'Доска не найдена.'});
     return;
   }
   const firstPostText = request.body.first_post_text;

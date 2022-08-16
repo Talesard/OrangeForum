@@ -10,7 +10,7 @@ exports.getPostsList = async (request, response) => {
     currThread = await Thread.findOne({ _id: threadId });
   } catch (error) {
     // console.log(`err get posts by thread id: ${threadId}`);
-    response.status(404).send('ERROR 404. NOT FOUND.');
+    response.status(404).render('error', {error_code: 404, error_message: 'Тред не найден.'});
     return;
   }
   response.render('postView', { thread: currThread, posts: postsList });

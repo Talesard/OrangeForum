@@ -22,7 +22,6 @@ it('error 404 on unknown path', (done) => {
   request(app)
     .get('/unknownpath')
     .expect(404)
-    .expect('ERROR 404. NOT FOUND.')
     .end(done);
 });
 
@@ -30,7 +29,6 @@ it('error 404 on unknown threadId', (done) => {
   request(app)
     .get('/thread/unknownThreadId')
     .expect(404)
-    .expect('ERROR 404. NOT FOUND.')
     .end(done);
 });
 
@@ -38,7 +36,6 @@ it('error 404 on unknown board', (done) => {
   request(app)
     .get('/threads/unknownBoard')
     .expect(404)
-    .expect('ERROR 404. NOT FOUND.')
     .end(done);
 });
 
