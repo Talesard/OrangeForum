@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/static/style.css">
-    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="icon" href="/static/favicon/favicon.ico" type="image/x-icon">
     <title>/{{ board }}/ - Threads</title>
 </head>
 <body>
@@ -13,20 +13,7 @@
 
     <div class="page">
         <div class="left-bar">
-            <div class="menu">
-                <ul>
-                    <li><a href="/threads/b">/b/ - бред</a></li>
-                    <li><a href="/threads/gd">/gd/ - gamedev</a></li>
-                    <li><a href="/threads/hw">/hw/ - компьютерное железо</a></li>
-                    <li><a href="/threads/mobi">/mobi/ - мобильные устройства и приложения</a></li>
-                    <li><a href="/threads/pr">/pr/ - программирование</a></li>
-                    <li><a href="/threads/ra">/ra/ - радиотехника</a></li>
-                    <li><a href="/threads/s">/s/ - программы</a></li>
-                    <li><a href="/threads/t">/t/ - техника</a></li>
-                    <li><a href="/threads/web">/web/ - веб-мастера</a></li>
-                    <li><a href="/threads/mochatest">/mochatest/ - для тестов</a></li>
-                </ul>
-            </div>
+            {{> leftMenu}}
         </div>
         <div class="right-bar">
             <div class="header">
@@ -65,21 +52,7 @@
         </div>
     </div>
 
-    <script>
-        let add_thread_bt = document.getElementById("add_thread_bt");
-        add_thread_bt.onclick = () => {
-            if (add_thread_bt.textContent === "Создать тред") {
-                add_thread_bt.textContent = "Закрыть форму постинга";
-                let form = document.getElementById('add_thread_form')
-                form.style='display: block';
-                let header = document.getElementById('main_header')
-                header.scrollIntoView();
-            } else {
-                add_thread_bt.textContent = "Создать тред";
-                document.getElementById('add_thread_form').style='display: none';
-            }
-        }
-    </script>
+    <script src="/static/js/threadViewScript.js"></script>
 
 </body>
 </html>

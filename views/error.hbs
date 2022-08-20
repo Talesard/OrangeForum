@@ -4,30 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/static/style.css">
-    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="icon" href="/static/favicon/favicon.ico" type="image/x-icon">
     <title>Error {{error_code}}</title>
 </head>
 <body>
     
 
     <div class="page">
-        <div class="left-bar">
-            <div class="menu">
-                <ul>
-                    <li><a href="/">/b/ - бред</a></li>
-                    <li><a href="/">/gd/ - gamedev</a></li>
-                    <li><a href="/">/hw/ - компьютерное железо</a></li>
-                    <li><a href="/">/mobi/ - мобильные устройства и приложения</a></li>
-                    <li><a href="/">/pr/ - программирование</a></li>
-                    <li><a href="/">/ra/ - радиотехника</a></li>
-                    <li><a href="/">/s/ - программы</a></li>
-                    <li><a href="/">/t/ - техника</a></li>
-                    <li><a href="/">/web/ - веб-мастера</a></li>
-                    <li><a href="/threads/mochatest">/mochatest/ - для тестов</a></li>
-                </ul>
-            </div>
-        </div>
+        {{> leftMenu}}
         <div class="right-bar">
             <div class="header">
                 <a href="/threads/b">

@@ -1,4 +1,5 @@
 const express = require('express');
+const hbs = require("hbs");
 const mongoose = require('mongoose');
 
 const threadRouter = require('./routes/threadRouter');
@@ -7,6 +8,7 @@ const postRouter = require('./routes/postRouter');
 const app = express();
 
 app.set('view engine', 'hbs');
+hbs.registerPartials(__dirname + "/views/partials");
 app.use(express.urlencoded({ extended: false }));
 app.use('/static', express.static(`${__dirname}/public`));
 
