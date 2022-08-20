@@ -1,6 +1,7 @@
 const express = require('express');
-const hbs = require("hbs");
+const hbs = require('hbs');
 const mongoose = require('mongoose');
+const fileUpload = require('express-fileupload');
 
 const threadRouter = require('./routes/threadRouter');
 const postRouter = require('./routes/postRouter');
@@ -8,9 +9,10 @@ const postRouter = require('./routes/postRouter');
 const app = express();
 
 app.set('view engine', 'hbs');
-hbs.registerPartials(__dirname + "/views/partials");
+hbs.registerPartials(`${__dirname}/views/partials`);
 app.use(express.urlencoded({ extended: false }));
 app.use('/static', express.static(`${__dirname}/public`));
+app.use(fileUpload({ createParentPath: true }));
 
 app.use('/threads', threadRouter);
 app.use('/thread', postRouter);
