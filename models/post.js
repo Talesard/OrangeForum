@@ -9,6 +9,7 @@ const postSchema = new Schema({
   date: { type: Date, default: Date.now },
   reply_to: { type: ObjectId },
   reply_from: { type: [ObjectId], default: [] },
+  image_name: { type: String },
 });
 
 module.exports = mongoose.model('Post', postSchema);

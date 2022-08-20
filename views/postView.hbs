@@ -35,6 +35,7 @@
 
                         <p class="post__details">{{ this.date }} pid#{{ this._id }}</p>
                         <div  class="post__message">{{#if this.reply_to}}<a href="#{{ this.reply_to }}">>>{{ this.reply_to }}</a><br>{{/if}}{{ this.text }}
+                        {{#if this.image_name }}<br><img src="/static/img/uploads/{{this.image_name}}" class="post-image">{{/if}}
                         {{#if this.reply_from}}
                         <p class="replies-anchor">
                             {{#each this.reply_from}}
@@ -49,7 +50,7 @@
                 <button id="answer_button" class="button_show_answer_form" onclick="document.getElementById('answer_to_thread').style='display: block;'">Ответить в тред</button>
 
                 <form method="POST" action="/thread/{{thread._id}}" id="answer_to_thread"
-                    style="display: none;" class="postform">
+                    style="display: none;" class="postform" enctype="multipart/form-data">
                     <table>
                         <tr>
                             <td><textarea cols="60" rows="10" class="textinput" name="text" id="title_input" placeholder="Сообщение"></textarea>
@@ -58,6 +59,9 @@
                         <tr>
                             <td><textarea cols="60" rows="1" class="textinput" name="replyTo" id="reply_to_input" placeholder="Id для ответа"></textarea>
                             </td>
+                        </tr>
+                        <tr>
+                            <td><input type="file" name="image" class="button_submit_answer"></td>
                         </tr>
                         <tr>
                             <td><button type="submit" class="button_submit_answer">Подтвердить</button></td>

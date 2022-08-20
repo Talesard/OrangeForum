@@ -180,3 +180,9 @@ li {
   font-size: 0.9em;
   white-space:nowrap;
 }
+
+.post-image{
+  width: 100px;
+  height: 100px;
+  float: left;
+}
