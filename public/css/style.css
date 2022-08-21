@@ -186,3 +186,7 @@ li {
   height: 100px;
   float: left;
 }
+
+.menu-list {
+  padding-left: 15px;
+}
