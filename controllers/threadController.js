@@ -1,4 +1,5 @@
 const Thread = require('../models/thread');
+const imageUtils = require('../utils/imageUtils');
 
 const boardsList = ['b', 'gd', 'hw', 'mobi', 'pr', 'ra', 's', 's', 't', 'web', 'mochatest'];
 
@@ -28,6 +29,14 @@ exports.postThread = async (request, response) => {
   }
   const firstPostText = request.body.first_post_text;
   const thread = new Thread({ title, first_post_text: firstPostText, board });
+  if (request.files) {
+    const { image } = request.files;
+    if (imageUtils.isImageFile(image)) {
+      const imageName = imageUtils.uniqueImageName(image);
+      image.mv(`./public/img/uploads/${imageName}`);
+      thread.image_name = imageName;
+    }
+  }
   try {
     await thread.save();
   } catch (error) {

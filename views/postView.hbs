@@ -28,6 +28,7 @@
                         <div  class="post__message" style="white-space: normal;">
                             <h3>{{thread.title}}</h3>
                             <p style="white-space: pre-wrap;">{{thread.first_post_text}}</p>
+                            {{#if thread.image_name }}<br><img src="/static/img/uploads/{{thread.image_name}}" class="post-image">{{/if}}
                         </div>
                     </div>
                     {{#each posts}}

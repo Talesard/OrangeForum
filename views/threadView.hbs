@@ -23,13 +23,16 @@
                 <br>
                 <div class="postdiv">
                     <button class="button_show_answer_form" id="add_thread_bt" onclick="document.getElementById('add_thread_form').style='display: block;'">Создать тред</button>
-                    <form method="POST" action="/threads/{{ board }}/" id="add_thread_form" class="postform" style="display: none;">
+                    <form method="POST" action="/threads/{{ board }}/" id="add_thread_form" class="postform" style="display: none;" enctype="multipart/form-data">
                         <table>
                             <tr>
                                 <td><textarea type="text" cols="60" rows="1" class="textinput" name="title" id="title_input" placeholder="Заголовок"></textarea></td>
                             </tr>
                             <tr>
                                 <td><textarea type="text" cols="60" rows="10" class="textinput" name="first_post_text" id="details_input" placeholder="Сообщение"> </textarea></td>
+                            </tr>
+                            <tr>
+                                <td><input type="file" name="image" class="button_submit_answer"></td>
                             </tr>
                             <tr>
                                 <td><button type="submit" class="button_submit_answer">Подтвердить</button></td>
@@ -44,7 +47,9 @@
                     <p class="post__details">{{ this.date }} tid#{{ this._id }} <a
                             href="/thread/{{this._id}}"> Ответ</a></p>
                     <b>{{ this.title }} </b>
-                    <div class="post__message">{{ this.first_post_text }}</div>
+                    <div class="post__message">{{ this.first_post_text }}
+                        {{#if this.image_name }}<br><img src="/static/img/uploads/{{this.image_name}}" class="post-image">{{/if}}
+                    </div>
                 </div>
                 {{/each}}
             </div>

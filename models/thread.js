@@ -7,6 +7,7 @@ const threadSchema = new Schema({
   title: { type: String, required: true },
   first_post_text: { type: String, required: true },
   date: { type: Date, default: Date.now },
+  image_name: { type: String },
 });
 
 module.exports = mongoose.model('Thread', threadSchema);

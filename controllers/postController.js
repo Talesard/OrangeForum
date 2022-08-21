@@ -1,8 +1,6 @@
-const crypto = require('crypto');
 const Post = require('../models/post');
 const Thread = require('../models/thread'); // По идее этого здесь быть не должно. Но как тогда получить оп пост?
-
-const imageExtensions = ['png', 'jpg', 'jpeg', 'webp', 'gif'];
+const imageUtils = require('../utils/imageUtils');
 
 exports.getPostsList = async (request, response) => {
   const { threadId } = request.params;
@@ -27,9 +25,8 @@ exports.postPost = async (request, response) => {
     let savedId;
     if (request.files) {
       const { image } = request.files;
-      const ext = image.mimetype.split('/')[1];
-      if (imageExtensions.indexOf(ext) !== -1) {
-        const imageName = `${crypto.createHash('md5').update(image.data).digest('hex') + Math.floor(Date.now() / 1000)}.${ext}`;
+      if (imageUtils.isImageFile(image)) {
+        const imageName = imageUtils.uniqueImageName(image);
         image.mv(`./public/img/uploads/${imageName}`);
         post.image_name = imageName;
       }
