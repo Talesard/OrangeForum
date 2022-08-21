@@ -1,9 +1,9 @@
 const crypto = require('crypto');
+const config = require('../config/config');
 
 const isImageFile = (image) => {
-  const imageExtensions = ['png', 'jpg', 'jpeg', 'webp', 'gif'];
   const ext = image.mimetype.split('/')[1];
-  return imageExtensions.indexOf(ext) !== -1;
+  return config.imageExtensions.indexOf(ext) !== -1;
 };
 
 const uniqueImageName = (image) => {

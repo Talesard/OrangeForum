@@ -2,6 +2,7 @@ const express = require('express');
 const hbs = require('hbs');
 const mongoose = require('mongoose');
 const fileUpload = require('express-fileupload');
+const config = require('./config/config');
 
 const threadRouter = require('./routes/threadRouter');
 const postRouter = require('./routes/postRouter');
@@ -22,11 +23,11 @@ app.get('/', (request, response) => { response.redirect('/threads/b/'); });
 app.use(async (request, response) => { response.status(404).render('error', { error_code: 404, error_message: 'URL не существует.' }); });
 
 const run = () => {
-  mongoose.connect('mongodb://localhost:27017/2chdb', { useUnifiedTopology: true })
+  mongoose.connect(config.mongoUrl, { useUnifiedTopology: true })
     .catch((err) => { console.log(`Mongodb err: ${err}`); })
-    .then(() => { app.listen(3000); })
+    .then(() => { app.listen(config.appPort); })
     .catch((err) => { console.log(`Express server err: ${err}`); })
-    .then(() => { console.log('Сервер ожидает подключения http://localhost:3000'); });
+    .then(() => { console.log(`Сервер ожидает подключения http://localhost:${config.appPort}`); });
 };
 
 run();

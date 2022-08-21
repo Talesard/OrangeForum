@@ -1,11 +1,10 @@
 const Thread = require('../models/thread');
 const imageUtils = require('../utils/imageUtils');
-
-const boardsList = ['b', 'gd', 'hw', 'mobi', 'pr', 'ra', 's', 's', 't', 'web', 'mochatest'];
+const config = require('../config/config');
 
 exports.getThreadsList = async (request, response) => {
   const { board } = request.params;
-  if (boardsList.indexOf(board) === -1) {
+  if (config.boardsList.indexOf(board) === -1) {
     response.status(404).render('error', { error_code: 404, error_message: 'Доска не найдена.' });
     return;
   }
@@ -23,7 +22,7 @@ exports.postThread = async (request, response) => {
   if (!request.body) return response.sendStatus(400);
   const { title } = request.body;
   const { board } = request.params;
-  if (boardsList.indexOf(board) === -1) {
+  if (config.boardsList.indexOf(board) === -1) {
     response.status(404).render('error', { error_code: 404, error_message: 'Доска не найдена.' });
     return;
   }
