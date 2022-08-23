@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
     <link rel="icon" href="/static/favicon/favicon.ico" type="image/x-icon">
-    <title>/{{ thread.board }}/ - {{thread.title}}</title>
+    <title>/reports/</title>
 </head>
 <body>
     
@@ -15,39 +15,31 @@
         {{> leftMenu}}
         <div class="right-bar">
             <div class="header">
-                <a href="/threads/{{ thread.board }}">
-                    <h1 class="main_header">Orange Forum - /{{ thread.board }}/</h1>
+                <a href="/reports">
+                    <h1 class="main_header">Orange Forum - /reports/</h1>
                 </a>
                 <br>
                 <button class="button_show_answer_form" onclick="document.getElementById('answer_button').scrollIntoView();">В конец треда</button>
             </div>
             <div class="content">
                 <div class="thread">
-                    <div  class="post post_type_oppost" id="{{thread._id}}">
-                        <p class="post__details">{{thread.date}} tid#{{thread._id}}</p>
+                    <div  class="post post_type_oppost" id="0000000000">
+                        <p class="post__details">2022 tid#0000000000</p>
                         <div  class="post__message" style="white-space: normal;">
-                            <h3>{{thread.title}}</h3>
-                            <p style="white-space: pre-wrap;">{{thread.first_post_text}}</p>
-                            {{#if thread.image_name }}<br><img src="/static/img/uploads/{{thread.image_name}}" class="post-image">{{/if}}
+                            <h3>Тред, в который попадают все репорты.</h3>
+                            <p style="white-space: pre-wrap;">Тред предназначен для модераторов, которые будут выносить решения по вашим репортам.</p>
                         </div>
                     </div>
-                    {{#each posts}}
+                    {{#each reports}}
                     <div class="post post_type_reply" id="{{ this._id }}">
-                        <p class="post__details">{{ this.date }} pid#{{ this._id }} <button class="button_show_answer_form" onclick="reportPost('{{this.thread_id}}', '{{this._id}}')">report</button></p>
-                        <div  class="post__message">{{#if this.reply_to}}<a href="#{{ this.reply_to }}">>>{{ this.reply_to }}</a><br>{{/if}}{{ this.text }}
-                        {{#if this.image_name }}<br><img src="/static/img/uploads/{{this.image_name}}" class="post-image">{{/if}}
-                        {{#if this.reply_from}}
-                        <p class="replies-anchor">
-                            {{#each this.reply_from}}
-                            <a href="#{{this}}">>>{{this}}</a>
-                            {{/each}}
-                        </p>{{/if}}</div>
+                        <p class="post__details">{{ this.date }} pid#{{ this._id }}</p>
+                        <div  class="post__message">{{#if this.reply_to}}<a href="#{{ this.reply_to }}">>>{{ this.reply_to }}</a><br>{{/if}}Пост: <a target="_blank" href='/thread/{{this.thread_id}}#{{this.post_id}}'>{{this.post_id}}</a><br>Причина: {{ this.reason }}</div>
                     </div>
                     {{/each}}
                 </div>
             </div>
             <div class="footer">
-                <button id="answer_button" class="button_show_answer_form" onclick="document.getElementById('answer_to_thread').style='display: block;'">Ответить в тред</button>
+                {{!-- <button id="answer_button" class="button_show_answer_form" onclick="document.getElementById('answer_to_thread').style='display: block;'">Ответить в тред</button>
 
                 <form method="POST" action="/thread/{{thread._id}}" id="answer_to_thread"
                     style="display: none;" class="postform" enctype="multipart/form-data">
@@ -67,11 +59,12 @@
                             <td><button type="submit" class="button_submit_answer">Подтвердить</button></td>
                         </tr>
                     </table>
-                </form>
+                </form> --}}
             </div>
         </div>
     </div>
-<script src="/static/js/postViewScript.js"></script>
+
+    <script src="/static/js/reportViewScript.js"></script>
 
 </body>
 </html>

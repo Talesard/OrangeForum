@@ -10,3 +10,20 @@ bt_show_answer.onclick = () => {
     document.getElementById('answer_to_thread').style = 'display: none';
   }
 };
+
+async function reportPost(threadId, postId) {
+  let reason = prompt('Reason:');
+  if (!reason) return;
+  const report = {
+    threadId: threadId,
+    postId: postId,
+    reason: reason,
+  };
+  let response = await fetch('/reports', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8'
+    },
+    body: JSON.stringify(report),
+  });
+}

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha tests/**/*.test.js --exit",
     "start": "node app.js",
-    "debug": "nodemon app.js",
+    "dev": "nodemon app.js",
     "lint": "eslint",
     "prettier": "prettier"
   },
