@@ -7,6 +7,6 @@ const jsonParser = express.json();
 
 reportRouter.get('/', reportController.getReportsList);
 reportRouter.post('/', reportController.postReport);
-reportRouter.delete('/', ()=>{});
+reportRouter.delete('/', () => {});
 
 module.exports = reportRouter;

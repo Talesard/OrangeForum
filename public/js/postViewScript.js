@@ -12,17 +12,17 @@ bt_show_answer.onclick = () => {
 };
 
 async function reportPost(threadId, postId) {
-  let reason = prompt('Reason:');
+  const reason = prompt('Reason:');
   if (!reason) return;
   const report = {
-    threadId: threadId,
-    postId: postId,
-    reason: reason,
+    threadId,
+    postId,
+    reason,
   };
-  let response = await fetch('/reports', {
+  const response = await fetch('/reports', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json;charset=utf-8'
+      'Content-Type': 'application/json;charset=utf-8',
     },
     body: JSON.stringify(report),
   });
