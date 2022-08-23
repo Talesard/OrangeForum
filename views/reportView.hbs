@@ -32,34 +32,13 @@
                     </div>
                     {{#each reports}}
                     <div class="post post_type_reply" id="{{ this._id }}">
-                        <p class="post__details">{{ this.date }} pid#{{ this._id }}</p>
+                        <p class="post__details">{{ this.date }} pid#{{ this._id }} <button class="button_show_answer_form" onclick="deleteReportedPost('{{this._id}}', '{{this.post_id}}')">delete</button> <button class="button_show_answer_form" onclick="passReportedPost('{{this._id}}', '{{this.post_id}}')">pass</button></p>
                         <div  class="post__message">{{#if this.reply_to}}<a href="#{{ this.reply_to }}">>>{{ this.reply_to }}</a><br>{{/if}}Пост: <a target="_blank" href='/thread/{{this.thread_id}}#{{this.post_id}}'>{{this.post_id}}</a><br>Причина: {{ this.reason }}</div>
                     </div>
                     {{/each}}
                 </div>
             </div>
             <div class="footer">
-                {{!-- <button id="answer_button" class="button_show_answer_form" onclick="document.getElementById('answer_to_thread').style='display: block;'">Ответить в тред</button>
-
-                <form method="POST" action="/thread/{{thread._id}}" id="answer_to_thread"
-                    style="display: none;" class="postform" enctype="multipart/form-data">
-                    <table>
-                        <tr>
-                            <td><textarea cols="60" rows="10" class="textinput" name="text" id="title_input" placeholder="Сообщение"></textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><textarea cols="60" rows="1" class="textinput" name="replyTo" id="reply_to_input" placeholder="Id для ответа"></textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><input type="file" name="image" class="button_submit_answer"></td>
-                        </tr>
-                        <tr>
-                            <td><button type="submit" class="button_submit_answer">Подтвердить</button></td>
-                        </tr>
-                    </table>
-                </form> --}}
             </div>
         </div>
     </div>

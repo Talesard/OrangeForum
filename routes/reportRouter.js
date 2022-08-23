@@ -3,10 +3,8 @@ const reportController = require('../controllers/reportController');
 
 const reportRouter = express.Router();
 
-const jsonParser = express.json();
-
 reportRouter.get('/', reportController.getReportsList);
 reportRouter.post('/', reportController.postReport);
-reportRouter.delete('/', () => {});
+reportRouter.delete('/', reportController.deleteReport);
 
 module.exports = reportRouter;
