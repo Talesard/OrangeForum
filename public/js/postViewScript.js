@@ -30,7 +30,7 @@ async function reportPost(threadId, postId) {
 
 const replyToPostShowForm = (postId) => {
   document.getElementById('answer_button').textContent = 'Закрыть форму постинга';
-  let form = document.getElementById('answer_to_thread');
+  const form = document.getElementById('answer_to_thread');
   form.style = 'display: block';
   form.scrollIntoView();
   document.getElementById('reply_to_input').value = postId;

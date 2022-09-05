@@ -190,3 +190,13 @@ li {
 .menu-list {
   padding-left: 15px;
 }
+
+.center-form {
+  text-align: -webkit-center;
+  text-align: -moz-center;
+}
+
+.white-input {
+  background-color: #192734;
+  color: white;
+}

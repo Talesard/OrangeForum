@@ -7,6 +7,7 @@ const config = require('./config/config');
 const threadRouter = require('./routes/threadRouter');
 const postRouter = require('./routes/postRouter');
 const reportRouter = require('./routes/reportRouter');
+const authRouter = require('./routes/authRouter');
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(fileUpload({ createParentPath: true }));
 app.use('/threads', threadRouter);
 app.use('/thread', postRouter);
 app.use('/reports', reportRouter);
+app.use('/auth', authRouter);
 
 app.get('/', (request, response) => { response.redirect('/threads/b/'); });
 

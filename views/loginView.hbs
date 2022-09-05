@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="icon" href="/static/favicon/favicon.ico" type="image/x-icon">
+    <title>/modlog/ - Вход</title>
+</head>
+<body>
+    
+
+    <div class="page">
+        {{> leftMenu}}
+        <div class="right-bar">
+            <div class="header">
+                <a href="/threads/b">
+                    <h1 class="main_header">Orange Forum - /modlog/</h1>
+                </a>
+            </div>
+            <div class="content">
+                <div>
+                    <form method="POST" action="/auth/login" id="answer_to_thread" class="postform center-form">
+                        <table>
+                            <tr>
+                                <td><input type="text" name="username" class="button_submit_answer white-input" placeholder="username"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" name="password" class="button_submit_answer white-input" placeholder="password"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td><button type="submit" class="button_submit_answer">Войти</button></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+                <br>
+                {{#if error}}
+                <div class="center-form" style="color: red">Error: {{error}}</div>
+                {{/if}}
+            </div>
+            <div class="footer">
+                
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
