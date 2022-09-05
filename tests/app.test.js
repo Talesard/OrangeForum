@@ -1,5 +1,6 @@
 const request = require('supertest');
 const assert = require('assert');
+const config = require('../config/config')
 
 const { app } = require('../app');
 
@@ -15,7 +16,7 @@ const getRandomString = (len) => {
 
 const randomTitle = getRandomString(20);
 const randomFirstPostText = getRandomString(50);
-const testThreadId = '62f9363e9fcea9a82d85bc5d';
+const testThreadId = config.mochaTestThreadId;
 const randomThreadPostText = getRandomString(50);
 
 it('error 404 on unknown path', (done) => {
