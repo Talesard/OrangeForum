@@ -19,7 +19,7 @@ async function verdictReportedPost(reportId, postId, verdict) {
 
 async function deleteReportedPost(reportId, postId) {
   if (!postId || !reportId) return;
-  await verdictReportedPost(reportId, postId, 'delete');
+  const resp = await verdictReportedPost(reportId, postId, 'delete');
   if (resp.status === 'fail') {
     alert('failed');
   } else if (resp.status === 'ok') {

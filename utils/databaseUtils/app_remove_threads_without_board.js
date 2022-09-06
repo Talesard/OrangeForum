@@ -1,6 +1,7 @@
 const { MongoClient } = require('mongodb');
+const config = require('../config/config');
 
-const url = 'mongodb://localhost:27017/';
+const url = config.mongoUrl;
 const mongoClient = new MongoClient(url);
 
 async function deleteThreadsWithoutBoard() {

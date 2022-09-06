@@ -1,6 +1,6 @@
 const request = require('supertest');
 const assert = require('assert');
-const config = require('../config/config')
+const config = require('../config/config');
 
 const { app } = require('../app');
 
