@@ -33,8 +33,7 @@
                     </div>
                     {{#each posts}}
                     <div class="post post_type_reply" id="{{ this._id }}">
-
-                        <p class="post__details">{{ this.date }} pid#{{ this._id }}</p>
+                        <p class="post__details">{{ this.date }} pid#{{ this._id }} <button class="button_show_answer_form" onclick="replyToPostShowForm('{{this._id}}')">answer</button> <button class="button_show_answer_form" onclick="reportPost('{{this.thread_id}}', '{{this._id}}')">report</button></p>
                         <div  class="post__message">{{#if this.reply_to}}<a href="#{{ this.reply_to }}">>>{{ this.reply_to }}</a><br>{{/if}}{{ this.text }}
                         {{#if this.image_name }}<br><img src="/static/img/uploads/{{this.image_name}}" class="post-image">{{/if}}
                         {{#if this.reply_from}}
@@ -72,8 +71,7 @@
             </div>
         </div>
     </div>
-
-    <script src="/static/js/postViewScript.js"></script>
+<script src="/static/js/postViewScript.js"></script>
 
 </body>
 </html>

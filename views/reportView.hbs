@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="icon" href="/static/favicon/favicon.ico" type="image/x-icon">
+    <title>/reports/</title>
+</head>
+<body>
+    
+
+    <div class="page">
+        {{> leftMenu}}
+        <div class="right-bar">
+            <div class="header">
+                <a href="/reports">
+                    <h1 class="main_header">Orange Forum - /reports/</h1>
+                </a>
+                <br>
+                <button class="button_show_answer_form" onclick="document.getElementById('answer_button').scrollIntoView();">В конец треда</button>
+            </div>
+            <div class="content">
+                <div class="thread">
+                    <div  class="post post_type_oppost" id="0000000000">
+                        <p class="post__details">2022 tid#0000000000</p>
+                        <div  class="post__message" style="white-space: normal;">
+                            <h3>Тред, в который попадают все репорты.</h3>
+                            <p style="white-space: pre-wrap;">Тред предназначен для модераторов, которые будут выносить решения по вашим репортам.</p>
+                            <p style="white-space: pre-wrap;">Хотите стать модером? Кидайте заявку на почту OrangeForum@kekw.com. В заявке указывайте возраст и то, почему именно вы должны стать модером.</p>
+                        </div>
+                    </div>
+                    {{#each reports}}
+                    <div class="post post_type_reply" id="{{ this._id }}">
+                        <p class="post__details">{{ this.date }} pid#{{ this._id }} <button class="button_show_answer_form" onclick="deleteReportedPost('{{this._id}}', '{{this.post_id}}')">delete</button> <button class="button_show_answer_form" onclick="passReportedPost('{{this._id}}', '{{this.post_id}}')">pass</button></p>
+                        <div  class="post__message">{{#if this.reply_to}}<a href="#{{ this.reply_to }}">>>{{ this.reply_to }}</a><br>{{/if}}Пост: <a target="_blank" href='/thread/{{this.thread_id}}#{{this.post_id}}'>{{this.post_id}}</a><br>Причина: {{ this.reason }}</div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+            <div class="footer">
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/reportViewScript.js"></script>
+
+</body>
+</html>
